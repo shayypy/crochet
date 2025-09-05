@@ -7,12 +7,19 @@
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router";
 import { App } from "./App";
+import PostRoute from "./routes/p.$slug";
 
 const elem = document.getElementById("root")!;
 const app = (
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<App />} />
+        <Route path="/p/:slug" element={<PostRoute />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>
 );
 
