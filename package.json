@@ -1,8 +1,9 @@
 {
-  "name": "bun-react-template",
+  "name": "croshay",
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "homepage": "https://shayypy.github.io/crochet",
   "scripts": {
     "fix": "biome check . --fix",
     "format": "biome format",
