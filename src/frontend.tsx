@@ -17,8 +17,8 @@ const app = (
     {/* basename because we have not deployed to our cname yet */}
     <BrowserRouter basename="/crochet">
       <Routes>
-        <Route index element={<App />} />
-        <Route path="/p/:slug" element={<PostRoute />} />
+        <Route index Component={App} />
+        <Route path="/p/:slug" Component={PostRoute} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
