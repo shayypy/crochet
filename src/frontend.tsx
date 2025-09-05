@@ -14,7 +14,8 @@ import PostRoute from "./routes/p.$slug";
 const elem = document.getElementById("root")!;
 const app = (
   <StrictMode>
-    <BrowserRouter>
+    {/* basename because we have not deployed to our cname yet */}
+    <BrowserRouter basename="/crochet">
       <Routes>
         <Route index element={<App />} />
         <Route path="/p/:slug" element={<PostRoute />} />
