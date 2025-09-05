@@ -139,6 +139,9 @@ const result = await Bun.build({
     "process.env.NODE_ENV": JSON.stringify("production"),
   },
   ...cliConfig,
+  // Bun builds relative paths into the index.html file which
+  // causes breakage on non-index routes
+  publicPath: "/crochet/",
 });
 
 const end = performance.now();
