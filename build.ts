@@ -1,8 +1,8 @@
 #!/usr/bin/env bun
+import { existsSync } from "node:fs";
+import { rm } from "node:fs/promises";
+import path from "node:path";
 import plugin from "bun-plugin-tailwind";
-import { existsSync } from "fs";
-import { rm } from "fs/promises";
-import path from "path";
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`
@@ -125,7 +125,7 @@ const entrypoints = [...new Bun.Glob("**.html").scanSync("src")]
   .map((a) => path.resolve("src", a))
   .filter((dir) => !dir.includes("node_modules"));
 console.log(
-  `📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`,
+  `📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process`,
 );
 
 const result = await Bun.build({
@@ -143,6 +143,19 @@ const result = await Bun.build({
   // causes breakage on non-index routes
   publicPath: "/crochet/",
 });
+
+// yet untested on GH actions
+const mdxFiles = [...new Bun.Glob("**/*.mdx").scanSync("posts")]
+  .map(a => path.resolve("posts", a))
+  .filter(dir => !dir.includes("node_modules"));
+console.log(
+  `📄 Found ${mdxFiles.length} MDX ${mdxFiles.length === 1 ? "file" : "files"} to copy\n`,
+);
+
+for (const file of mdxFiles) {
+  const lastSegments = file.replace(/^.+\/posts\//,"");
+  await Bun.write(path.join( outdir, "raw", lastSegments), Bun.file(file))
+}
 
 const end = performance.now();
 

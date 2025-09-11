@@ -1,4 +1,8 @@
-# bun-react-tailwind-shadcn-template
+# cro.shay.cat
+
+Simple blogtype website mostly for crochet related things. I made this in anticipation of needing somewhere to publish a pattern.
+
+## Develop
 
 To install dependencies:
 
@@ -18,4 +22,12 @@ To run for production:
 bun start
 ```
 
-This project was created using `bun init` in bun v1.2.21. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+To build to `./dist` (only necessary if you are not using Pages):
+
+```bash
+bun run build
+```
+
+## Attribution
+
+Thanks to Rafael Pedicini for publishing [spa-github-pages](https://github.com/rafgraph/spa-github-pages) (MIT), a very helpful template for single-page apps that I was able to adapt for this site.

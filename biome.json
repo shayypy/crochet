@@ -6,7 +6,8 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "includes": ["src/**/*.{ts,js,tsx,jsx,css}", "bun-env.d.ts"]
   },
   "formatter": {
     "enabled": true,
@@ -15,7 +16,13 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noUnknownAtRules": "off"
+      },
+      "correctness": {
+        "useUniqueElementIds": "off"
+      }
     }
   },
   "javascript": {
